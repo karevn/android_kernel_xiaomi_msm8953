@@ -32,6 +32,10 @@ struct aw2013_platform_data {
 	int hold_time_ms;
 	int fall_time_ms;
 	int off_time_ms;
+	int red;
+	int green;
+	int blue;
+	int blink;
 	int awgpio;
 	struct aw2013_led *led;
 };
