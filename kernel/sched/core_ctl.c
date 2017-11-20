@@ -91,7 +91,10 @@ static ssize_t store_min_cpus(struct cluster_data *state,
 
 static ssize_t show_min_cpus(const struct cluster_data *state, char *buf)
 {
+	return snprintf(buf, PAGE_SIZE, "4\n");
+	#if 0
 	return snprintf(buf, PAGE_SIZE, "%u\n", state->min_cpus);
+	#endif
 }
 
 static ssize_t store_max_cpus(struct cluster_data *state,
@@ -112,7 +115,10 @@ static ssize_t store_max_cpus(struct cluster_data *state,
 
 static ssize_t show_max_cpus(const struct cluster_data *state, char *buf)
 {
+	return snprintf(buf, PAGE_SIZE, "4\n");
+	#if 0
 	return snprintf(buf, PAGE_SIZE, "%u\n", state->max_cpus);
+	#endif
 }
 
 static ssize_t store_offline_delay_ms(struct cluster_data *state,
