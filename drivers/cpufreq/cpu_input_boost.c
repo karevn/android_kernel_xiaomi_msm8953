@@ -250,7 +250,7 @@ static int do_cpu_boost(struct notifier_block *nb,
 
 	/* Boost CPU to max frequency for wake boost */
 	if (state & WAKE_BOOST) {
-		policy->min = policy->max;
+		cpufreq_verify_within_limits(policy, policy->max, policy->max);
 		return NOTIFY_OK;
 	}
 
@@ -268,7 +268,7 @@ static int do_cpu_boost(struct notifier_block *nb,
 		ret = validate_cpu_freq(policy->freq_table, &boost_freq);
 		if (ret)
 			set_boost_freq(b, policy->cpu, boost_freq);
-		policy->min = min(policy->max, boost_freq);
+		cpufreq_verify_within_limits(policy, boost_freq, policy->max);
 	}
 
 	return NOTIFY_OK;
